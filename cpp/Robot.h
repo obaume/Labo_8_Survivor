@@ -13,6 +13,7 @@ using Data  = unsigned;
 using Coord = std::pair<Data,Data>;
 
 class Robot {
+   friend class Board;
 public:
    Robot();
    Robot(Coord coord);
@@ -21,6 +22,7 @@ public:
    void deplacer(Coord coord);
    Coord get_coord();
 private:
+   bool operator==(const Robot& r);
    const    Data NO_;
    static   Data total, next;
    Coord coord;
