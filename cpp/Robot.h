@@ -17,6 +17,7 @@ public:
    ~Robot();
    void deplacer(Direction direction);
    void deplacer(Coord coord);
+   Data get_num(const Robot& r);
    Coord get_coord();
 private:
    bool operator==(const Robot& r);
