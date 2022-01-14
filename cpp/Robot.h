@@ -9,9 +9,6 @@
 
 enum class Direction {HAUT,BAS,GAUCHE,DROITE};
 
-using Data  = unsigned;
-using Coord = std::pair<Data,Data>;
-
 class Robot {
    friend class Board;
 public:
@@ -24,7 +21,7 @@ public:
 private:
    bool operator==(const Robot& r);
    const    Data NO_;
-   static   Data total, next;
+   static   Data total, suivant;
    Coord coord;
 };
 
