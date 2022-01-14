@@ -14,12 +14,16 @@ Robot::Robot():NO_(suivant) {
 }
 
 Robot::~Robot() {
-   --total
+   --total;
 }
 
-Robot::Robot(Coord coord) {}
+Robot::Robot(Coord coord): NO_(suivant) {
+   this->coord = coord;
+   ++total;
+   ++suivant;
+}
 
-Coord Robot::get_coord() {
+Coord Robot::get_coord() {}
 
 bool Robot::operator==(const Robot& r) {
  return (coord == r.coord);
@@ -47,10 +51,9 @@ void Robot::deplacer(Direction direction) {
       }
 }
 
-   Data Robot::get_num(const Robot& r) {
-   return
+Data Robot::get_num(const Robot& r) {
+   return r.NO_;
 }
 
-}
 
 
