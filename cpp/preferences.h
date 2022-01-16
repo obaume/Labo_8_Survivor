@@ -6,6 +6,8 @@
 #define CPP_PREFERENCES_H
 
 #include <utility>
+#include <string>
+
 
 using Data = unsigned;
 using Coord = std::pair<Data,Data>;

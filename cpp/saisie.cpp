@@ -17,10 +17,10 @@ Compilateur    : Mingw-w64 g++ 11.2.0
 
 using namespace std;
 
-int saisie_entre(const int& min, const int& max, const string& message,const
+Data saisie_entre(const Data& min, const Data& max, const string& message,const
 string& msg_erreur){
 
-   int  saisie;
+   Data  saisie;
    bool erreur;
 
    do {

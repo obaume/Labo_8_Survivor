@@ -17,7 +17,7 @@ Compilateur    : Mingw-w64 g++ 11.2.0
 
 using namespace std;
 
-int aleatoire(Data min, Data max){
+int aleatoire(int min, int max){
    static bool premiere_fois = true;
 
    // Si la fonction est appelée pour la première fois
@@ -27,5 +27,5 @@ int aleatoire(Data min, Data max){
       premiere_fois = false;
    }
    // retourne un nombre entre min et max
-   return rand() % (max - min + 1) + min;
+   return (int(unsigned(rand()) % (unsigned)(max - min + 1) + (unsigned)min));
 }

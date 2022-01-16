@@ -14,6 +14,6 @@
 // Param max     : La valeur la plus grande de l'intervalle
 // Retour        : le nombre aléatoire
 // Exception     : n/a
-int aleatoire(Data min, Data max);
+int aleatoire(int min, int max);
 
 #endif //CPP_ALEATOIRE_H

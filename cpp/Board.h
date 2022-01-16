@@ -9,22 +9,25 @@
 #include "Robot.h"
 #include "preferences.h"
 
+class Robot;
 enum class Status{EN_COURS, FINI};
 
 class Board {
+   friend std::ostream& operator <<(std::ostream& os, const Board& b);
 public:
    Board(Data largeur, Data hauteur, Data nombre_robot);
    ~Board();
-   friend std::ostream& operator<<(std::ostream& os,const Board& b);
    void effectuer_tour();
-   void supprimer_superposer();
+   bool est_fini() const;
+   std::vector<Robot> trouver_robot(Data ligne) const;
+
 private:
-   vector<Robot> robots;
+   std::vector<Robot> robots;
    Status status;
-   const Data  MIN_HAUTEUR,
-               MAX_HAUTEUR,
-               MIN_LARGEUR,
-               MAX_LARGEUR;
+   const Data  max_hauteur,
+               max_largeur,
+               min_hauteur,
+               min_largeur;
 };
 
 
