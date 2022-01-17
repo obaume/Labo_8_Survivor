@@ -1,7 +1,7 @@
 /*
 -----------------------------------------------------------------------------------
 Nom du fichier : saisie.h
-Auteur(s)      : Dorian Gillioz
+Auteur(s)      : Baume Oscar & Dorian Gillioz
 Date creation  : 10.11.2021
 Description    : En-tête de la librairie pour les saisies utilisateurs du programme
 Remarque(s)    : ---

@@ -1,7 +1,7 @@
 /*
 -----------------------------------------------------------------------------------
 Nom du fichier : saisie.cpp
-Auteur(s)      : Dorian Gillioz
+Auteur(s)      : Oscar Baume & Dorian Gillioz
 Date creation  : 10.11.2021
 Description    : Définition des fonctions de la librairie saisie
 Remarque(s)    : ---

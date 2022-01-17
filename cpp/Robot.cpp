@@ -1,6 +1,18 @@
-//
-// Created by oscar on 14.01.2022.
-//
+/*
+-----------------------------------------------------------------------------------
+Nom du fichier      : Robot.cpp
+Nom du laboratoire  :
+Auteur(s)           : Baume Oscar & Centeno Cédric
+Date creation       : 14.01.2022
+Description         :
+Remarque(s)         :
+Modification:       ---
+                    Date   :
+                    Auteur :
+                    Raison :
+Compilateur         : Mingw-w64 g++ 11.2.0
+-----------------------------------------------------------------------------------
+*/
 
 #include <iostream>
 #include "Robot.h"
@@ -9,19 +21,19 @@
 Data Robot::suivant  = 1;
 Data Robot::total    = 0;
 
-Robot::Robot():NO_(suivant) {
+Robot::Robot(): NO(suivant) {
    coord.first = coord.second = 0;
    ++total;
    ++suivant;
 }
 
-Robot::Robot(Coord coord): NO_(suivant) {
+Robot::Robot(Coord coord): NO(suivant) {
    this->coord = coord;
    ++total;
    ++suivant;
 }
 
-Robot::Robot(const Robot &r):NO_(r.NO_) {
+Robot::Robot(const Robot &r): NO(r.NO) {
    coord = r.coord;
 }
 
@@ -33,7 +45,11 @@ Coord Robot::get_coord() const{
    return coord;
 }
 
-
+Robot &Robot::operator=(const Robot &r) {
+   (unsigned&) this->NO = r.NO;
+   this->coord = r.coord;
+   return *this;
+}
 
 bool Robot::operator==(const Robot& r) {
  return (coord == r.coord);
@@ -44,7 +60,7 @@ void Robot::deplacer(Coord coord) {
 }
 
 Data Robot::get_num() const {
-   return NO_;
+   return NO;
 }
 
 std::ostream &operator<<(std::ostream &os, const Robot &b) {

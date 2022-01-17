@@ -1,18 +1,30 @@
-//
-// Created by oscar on 14.01.2022.
-//
+/*
+-----------------------------------------------------------------------------------
+Nom du fichier      : <nom du fichier>.<xxx>
+Nom du laboratoire  :
+Auteur(s)           : Baume Oscar & Centeno Cédric
+Date creation       : 14.01.2022
+Description         :
+Remarque(s)         :
+Modification:       ---
+                    Date   :
+                    Auteur :
+                    Raison :
+Compilateur         : Mingw-w64 g++ 11.2.0
+-----------------------------------------------------------------------------------
+*/
 #include <ostream>
 #include <algorithm>
 #include <iostream>
 #include <iomanip>
 #include <string>
-#include "Board.h"
+#include "Plateau.h"
 #include "Aleatoire.h"
 
 using namespace std;
 
 
-Board::Board(Data largeur, Data hauteur, Data nombre_robot)
+Plateau::Plateau(Data largeur, Data hauteur, Data nombre_robot)
       : max_hauteur(hauteur), max_largeur(largeur),
         min_hauteur(0), min_largeur(0){
    robots.resize(nombre_robot);
@@ -39,16 +51,16 @@ Board::Board(Data largeur, Data hauteur, Data nombre_robot)
    status = Status::EN_COURS;
 }
 
-Board::~Board() {
+Plateau::~Plateau() {
    robots.clear();
 
 }
 
-bool Board::est_fini() const {
+bool Plateau::est_fini() const {
    return status == Status::FINI;
 }
 
-void Board::effectuer_tour() {
+void Plateau::effectuer_tour() {
    static int tour = 1;
    cout << "tour #" << tour++ << endl;
    if (robots.size() != 1 and status == Status::EN_COURS) {
@@ -85,7 +97,7 @@ void Board::effectuer_tour() {
 }
 
 
-vector<Robot> Board::trouver_robot(Data ligne) const {
+vector<Robot> Plateau::trouver_robot(Data ligne) const {
    vector<Robot> output;
    for(const Robot& r : robots){
       if(r.get_coord().first == ligne){
@@ -95,7 +107,7 @@ vector<Robot> Board::trouver_robot(Data ligne) const {
    return output;
 }
 
-ostream& operator <<(ostream &os, const Board& b) {
+ostream& operator <<(ostream &os, const Plateau& b) {
    const string ESPACE = string(b.max_largeur,' ');
    const int LARGEUR_AFFICHAGE = (int)b.max_largeur + 2;
    const unsigned ZERO_ASCII = 48;
