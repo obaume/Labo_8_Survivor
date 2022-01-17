@@ -53,7 +53,6 @@ Plateau::Plateau(Data largeur, Data hauteur, Data nombre_robot)
 
 Plateau::~Plateau() {
    robots.clear();
-
 }
 
 bool Plateau::est_fini() const {
@@ -61,36 +60,18 @@ bool Plateau::est_fini() const {
 }
 
 void Plateau::effectuer_tour() {
-   static int tour = 1;
-   cout << "tour #" << tour++ << endl;
    if (robots.size() != 1 and status == Status::EN_COURS) {
-      for (size_t i = 0;i < robots.size();++i){
-         Robot r1 = robots.at(i);
-         cout << "r1 : " << r1.get_num()<<endl;
-         //cout << "taille robots : " <<  robots.size() << endl;
-         r1.deplacer(max_hauteur, max_largeur, min_hauteur, min_largeur);
-         //cout << r1.get_num() << "[" <<r1.get_coord().first << "," << r1
-           // .get_coord().second<< "] se deplace" << endl;
-         /*for(Robot r2 : trouver_robot(r1.get_coord().first)) {
-            if (r1 == r2 and r1.get_num() != r2.get_num()) {
-               cout <<"r2 : " << r2.get_num()<<endl;
-               cout << r1.get_num() << " tue " << r2.get_num() << endl;
-               //cout << r2.get_num() << "[" << r2.get_coord().first << "," << r2
-               //   .get_coord().second << "] est tue" << endl;
-               vector<Robot> reste;
-               for (const Robot &o: robots) {
-                  if (o.get_num() != r2.get_num())
-                     reste.push_back(o);
-               }
-               robots.clear();
-               //cout << "Reste : " << reste.size() << endl;
-               for (Robot &o: reste) {
-                 //cout << o.get_num() << endl;
-                  robots.push_back(o);
-               }
+      for (auto y = robots.begin(); y < robots.end(); ++y){
+         y->deplacer(max_hauteur, max_largeur, min_hauteur, min_largeur);
+         for(auto i = robots.begin(); i < robots.end(); ++i) {
+            if (  y->get_num() != i->get_num()
+                  and y->get_coord() == i->get_coord()){
+               robots.erase(i);
             }
-         }*/
+         }
       }
+      if(robots.size() == 1)
+         status = Status::FINI;
    } else{
       status = Status::FINI;
    }
@@ -113,12 +94,12 @@ ostream& operator <<(ostream &os, const Plateau& b) {
    const unsigned ZERO_ASCII = 48;
 
    os << setfill('-') << setw(LARGEUR_AFFICHAGE) << "-";
-   os << endl << setfill(' ') << setw(0);
+   os << endl;
    for (Data i = 0; i < b.max_hauteur; ++i) {
       vector<Robot> ligne = b.trouver_robot(i);
       os << '|';
       if (ligne.empty()) {
-         os << setw((int)b.max_largeur + 1);
+         os << setfill(' ') << setw((int)b.max_largeur + 1);
       } else {
          string output = ESPACE;
          for (const Robot& r: ligne) {

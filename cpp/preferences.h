@@ -18,7 +18,6 @@ Compilateur         : Mingw-w64 g++ 11.2.0
 #define CPP_PREFERENCES_H
 
 #include <utility>
-#include <string>
 
 
 using Data = unsigned;

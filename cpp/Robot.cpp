@@ -46,13 +46,13 @@ Coord Robot::get_coord() const{
 }
 
 Robot &Robot::operator=(const Robot &r) {
-   (unsigned&) this->NO = r.NO;
+   (Data&) this->NO = r.NO;
    this->coord = r.coord;
    return *this;
 }
 
 bool Robot::operator==(const Robot& r) {
- return (coord == r.coord);
+ return (coord == r.coord and NO != r.NO);
 }
 
 void Robot::deplacer(Coord coord) {
