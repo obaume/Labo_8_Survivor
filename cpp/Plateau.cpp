@@ -1,6 +1,6 @@
 /*
 -----------------------------------------------------------------------------------
-Nom du fichier      : <nom du fichier>.<xxx>
+Nom du fichier      : Plateau.cpp
 Nom du laboratoire  :
 Auteur(s)           : Baume Oscar & Centeno Cédric
 Date creation       : 14.01.2022

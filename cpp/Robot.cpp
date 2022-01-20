@@ -18,41 +18,91 @@ Compilateur         : Mingw-w64 g++ 11.2.0
 #include "Robot.h"
 #include "Aleatoire.h"
 
-Data Robot::suivant  = 0;
-Data Robot::total    = 0;
+Data Robot::suivant        = 0;
+
+using namespace std;
+
+std::ostream &operator<<(std::ostream &os, const Robot& robot) {
+   return os << robot.coord.first << ", " << robot.coord.second;
+}
 
 Robot::Robot(): NO(suivant) {
+   // on decide qu'un robot a par defaut les coordonnees 0 0
    coord.first = coord.second = 0;
-   ++total;
    ++suivant;
 }
+
+Robot::Robot(const Robot& robot): NO(robot.NO) {
+   coord = robot.coord;
+}
+
 
 Robot::Robot(Coord coord): NO(suivant) {
    this->coord = coord;
-   ++total;
    ++suivant;
 }
 
-Robot::Robot(const Robot &r): NO(r.NO) {
-   coord = r.coord;
-}
-
 Robot::~Robot() {
-   --total;
 }
 
-Coord Robot::get_coord() const{
-   return coord;
+bool Robot::operator<(const Robot& robot) const{
+   // comparer la premiere coordonnee des 2 robots
+   if(coord.first < robot.coord.first) {
+      return true;
+   }
+   else if(robot.coord.first < coord.first) {
+      return false;
+   }
+   // si elles sont egales, comparer la deuxieme coordonnee
+   else if(coord.first == robot.coord.first) {
+      if (coord.second < robot.coord.second) {
+         return true;
+      } else {
+         return false;
+      }
+   }
+   // ce cas ne devrait jamais se produire, mais ajoute par securite
+   return false;
 }
 
-Robot &Robot::operator=(const Robot &r) {
-   (Data&) this->NO = r.NO;
-   this->coord = r.coord;
+bool Robot::operator==(const Robot& robot) const{
+   // verifie si deux robots differends ont les memes coordonnees
+   return (coord == robot.coord and NO != robot.NO);
+}
+
+Robot &Robot::operator=(const Robot& robot) {
+   // cast en reference car NO est une constante
+   (Data&) this->NO = robot.NO;
+   this->coord = robot.coord;
    return *this;
 }
 
-bool Robot::operator==(const Robot& r) {
- return (coord == r.coord and NO != r.NO);
+void Robot::deplacer(Data max_hauteur, Data max_largeur, Data min_hauteur,
+                     Data min_largeur) {
+   // generation aleatoire d'une direction dans l'interval [HAUT - DROITE] de la
+   // class Direction
+   Direction direction = Direction(aleatoire((int)Direction::HAUT,
+                                             (int)Direction::DROITE));
+   // pour chaque case, verifier si le robot ne sors pas du plateau, si c'est
+   // le cas, le robot ne bouge pas
+   switch (direction) {
+      case Direction::HAUT   :
+         if (coord.first != max_hauteur-1)
+            coord.first += 1;
+         break;
+      case Direction::BAS    :
+         if (coord.first != min_hauteur)
+            coord.first -= 1;
+         break;
+      case Direction::GAUCHE :
+         if (coord.second != min_largeur)
+            coord.second  -= 1;
+         break;
+      case Direction::DROITE :
+         if (coord.second != max_largeur-1)
+            coord.second  += 1;
+         break;
+   }
 }
 
 void Robot::deplacer(Coord coord) {
@@ -63,48 +113,14 @@ Data Robot::get_num() const {
    return NO;
 }
 
-std::ostream &operator<<(std::ostream &os, const Robot &b) {
-   os << b.coord.first << ", " << b.coord.second;
-   return os;
-}
-
-void Robot::deplacer(Data max_hauteur, Data max_largeur, Data min_hauteur,
-                     Data min_largeur) {
-
-   Direction direction = Direction(aleatoire((int)Direction::HAUT, (int)
-      Direction::DROITE));
-   //std::cout << " se deplace #" << (int)direction << std::endl;
-   switch (direction) {
-      case Direction::HAUT   :
-         if (coord.first != max_hauteur-1)
-         coord.first += 1;
-         break;
-      case Direction::BAS    :
-         if (coord.first != min_hauteur)
-         coord.first -= 1;
-         break;
-      case Direction::GAUCHE :
-         if (coord.second != min_largeur)
-         coord.second  -= 1;
-         break;
-      case Direction::DROITE :
-         if (coord.second != max_largeur-1)
-         coord.second  += 1;
-         break;
-   }
+Coord Robot::get_coord() const{
+   return coord;
 }
 
 
-bool Robot::operator<(const Robot& r) const{
-   if(coord.first < r.coord.first)
-      return true;
-   else if(r.coord.first < coord.first)
-      return false;
-   else if(coord.first == r.coord.first)
-      if(coord.second < r.coord.second){
-         return true;
-      }
-      else{
-         return false;
-      }
-}
+
+
+
+
+
+

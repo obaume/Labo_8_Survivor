@@ -50,7 +50,7 @@ public:
    /**
     * Nom        : ~Plateau
     * Définition : Destructeur d'objet de la class Plateau
-    * Remarques  : -
+    * Remarques  :
     */
    ~Plateau();
    /**
@@ -59,7 +59,7 @@ public:
     *              On y déplace les robots, vérifie si il y a 2 robots à la même
     *              position -> si c'est le cas "tue" le robot qui s'est fait
     *              marcher dessus.
-    * Remarques  : fonction non const car on modifie le vecteur robots
+    * Remarques  : Fonction non const car on modifie le vecteur robots
     */
    void effectuer_tour();
    /**
@@ -71,11 +71,11 @@ public:
    bool est_fini() const;
    /**
     * Nom          : trouver_robot
-    * Définition   : fonction qui retourne les robots se trouvant sur une ligne du
+    * Définition   : Fonction qui retourne les robots se trouvant sur une ligne du
     *                plateau.
     * Remarques    :
     * @param ligne : Numéro de la ligne ou il faut chercher les robots
-    * @return      : vecteur des robots de la ligne "ligne"
+    * @return      : Vecteur des robots de la ligne "ligne"
     */
    std::vector<Robot> trouver_robot(Data ligne) const;
 
