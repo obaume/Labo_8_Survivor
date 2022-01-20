@@ -4,7 +4,7 @@ Nom du fichier      : Robot.cpp
 Nom du laboratoire  :
 Auteur(s)           : Baume Oscar & Centeno Cédric
 Date creation       : 14.01.2022
-Description         :
+Description         : Définition des fonction de la classe Robot
 Remarque(s)         :
 Modification:       ---
                     Date   :
@@ -18,7 +18,7 @@ Compilateur         : Mingw-w64 g++ 11.2.0
 #include "Robot.h"
 #include "Aleatoire.h"
 
-Data Robot::suivant        = 0;
+Data Robot::suivant = 0;
 
 using namespace std;
 
@@ -27,13 +27,13 @@ std::ostream &operator<<(std::ostream &os, const Robot& robot) {
 }
 
 Robot::Robot(): NO(suivant) {
-   // on decide qu'un robot a par defaut les coordonnees 0 0
+   // on décide qu'un robot a par défaut les coordonnées 0 0
    coord.first = coord.second = 0;
    ++suivant;
 }
 
 Robot::Robot(const Robot& robot): NO(robot.NO) {
-   // suivant n'est pas incremente car ce constructeur est utilise pour deplacer
+   // suivant n'est pas incrementé car ce constructeur est utilisé pour décaler
    // des robots dans un vecteur
    coord = robot.coord;
 }
@@ -48,14 +48,14 @@ Robot::~Robot() {
 }
 
 bool Robot::operator<(const Robot& robot) const{
-   // comparer la premiere coordonnee des 2 robots
+   // comparer la première coordonnée des 2 robots
    if(coord.first < robot.coord.first) {
       return true;
    }
    else if(robot.coord.first < coord.first) {
       return false;
    }
-   // si elles sont egales, comparer la deuxieme coordonnee
+   // si elles sont égales, comparer la deuxieme coordonnée
    else if(coord.first == robot.coord.first) {
       if (coord.second < robot.coord.second) {
          return true;
@@ -63,12 +63,12 @@ bool Robot::operator<(const Robot& robot) const{
          return false;
       }
    }
-   // ce cas ne devrait jamais se produire, mais ajoute par securite
+   // ce cas ne devrait jamais se produire, mais ajouté par securité
    return false;
 }
 
 bool Robot::operator==(const Robot& robot) const{
-   // verifie si deux robots differends ont les memes coordonnees
+   // vérifie si deux robots différents ont les mêmes coordonnées
    return (coord == robot.coord and NO != robot.NO);
 }
 
@@ -85,7 +85,7 @@ void Robot::deplacer(Data max_hauteur, Data max_largeur, Data min_hauteur,
    // class Direction
    Direction direction = Direction(aleatoire((int)Direction::HAUT,
                                              (int)Direction::DROITE));
-   // pour chaque case, verifier si le robot ne sors pas du plateau, si c'est
+   // pour chaque case, vérifier si le robot ne sors pas du plateau, si c'est
    // le cas, le robot ne bouge pas
    switch (direction) {
       case Direction::HAUT   :

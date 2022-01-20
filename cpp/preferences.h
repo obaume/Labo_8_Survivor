@@ -4,7 +4,8 @@ Nom du fichier      : preferences.h
 Nom du laboratoire  :
 Auteur(s)           : Baume Oscar & Centeno Cédric
 Date creation       : 14.01.2022
-Description         :
+Description         : En-tête mettant à disposition des allias permettant de
+                      modifier les types de données à un seul endroit
 Remarque(s)         :
 Modification:       ---
                     Date   :
@@ -18,7 +19,6 @@ Compilateur         : Mingw-w64 g++ 11.2.0
 #define CPP_PREFERENCES_H
 
 #include <utility>
-
 
 using Data = unsigned;
 using Coord = std::pair<Data,Data>;

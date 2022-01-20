@@ -4,7 +4,8 @@ Nom du fichier      : Robot.h
 Nom du laboratoire  :
 Auteur(s)           : Baume Oscar & Centeno Cédric
 Date creation       : 14.01.2022
-Description         :
+Description         : En-tête de la class Robot.
+                      Définition de la class et de ces composants
 Remarque(s)         :
 Modification:       ---
                     Date   :
@@ -20,6 +21,7 @@ Compilateur         : Mingw-w64 g++ 11.2.0
 #include "Plateau.h"
 #include "preferences.h"
 
+// directions utilisées pour déplacer un robot
 enum class Direction {HAUT,BAS,GAUCHE,DROITE};
 
 class Robot {
@@ -43,14 +45,14 @@ public:
     * Nom                : Robot
     * Définition         : Constructeur d'objet par copie de la class Robot
     * Remarques          :
-    * @param robot       : Robot a copier
+    * @param robot       : Robot à copier
     */
    Robot(const Robot& robot);
    /**
     * Nom                : Robot
     * Définition         : Constructeur d'objet de la class Robot
     * Remarques          :
-    * @param coord       : Coordonnees du Robot sous forme de pair
+    * @param coord       : Coordonnées du Robot sous forme de pair
     */
    Robot(Coord coord);
    /**
@@ -61,31 +63,33 @@ public:
    ~Robot();
    /**
     * Nom                : operator<
-    * Définition         : Operateur de comparaison plus petit que de la class Robot
+    * Définition         : Opérateur de comparaison "plus petit que" de la class
+    *                      Robot
     * Remarques          :
     * @param robot       : Objet robot que l'on souhaite comparer
-    * @return            : Si l'objet implicite est plus petit que objet
+    * @return            : Si le robot courant est plus petit que le robot en
+    *                      paramétre
     */
    bool operator<(const Robot& robot) const;
    /**
     * Nom                : operator==
-    * Définition         : Operateur de comparaison est egal de la class Robot
+    * Définition         : Opérateur de comparaison "est égal" de la class Robot
     * Remarques          :
     * @param robot       : Robot que l'on souhaite comparer
-    * @return            : Si l'objet implicite est egal a objet
+    * @return            : Si le robot courant est égal au robot en paramétre
     */
    bool operator==(const Robot& robot) const;
    /**
     * Nom                : operator=
-    * Définition         : Operateur d'affectation de la class Robot
+    * Définition         : Opérateur d'affectation de la class Robot
     * Remarques          :
     * @param robot       : Robot que l'on souhaite comparer
-    * @return            : Le robot courant modifie
+    * @return            : Le robot courant modifié
     */
    Robot& operator=(const Robot& robot);
    /**
     * Nom                : deplacer
-    * Définition         : Fonction qui change de manière aleatoire une coordonnee du
+    * Définition         : Fonction qui change de manière aléatoire une coordonnée du
     *                      robot courant en prenant en compte les dimentions du
     *                      plateau
     * Remarques          :
@@ -98,34 +102,32 @@ public:
                  Data min_largeur);
    /**
     * Nom                : deplacer
-    * Définition         : Fonction qui change les coordonnees du robot courant
-    *                      par la pair entree en parametre
+    * Définition         : Fonction qui change les coordonnées du robot courant
+    *                      par la pair entree en paramétre
     * Remarques          :
-    * @param coord       : Coordonnee que l'on attribue a notre robot courant
+    * @param coord       : Coordonnées que l'on attribue a notre robot courant
     */
    void deplacer(Coord coord);
    /**
     * Nom                : get_num()
     * Définition         : Fonction publique permettant d'obtenir la valeur de la
-    *                      donnee NO d'un Robot
-    * Remarques          : Utilise pour l'operateur de flux de Plateau
-    * @param coord       : Coordonnee que l'on attribue au robot courant
+    *                      donnée NO d'un Robot
+    * Remarques          : Utilisé pour l'opérateur de flux de Plateau
     */
    Data get_num() const;
    /**
     * Nom                : get_coord()
     * Définition         : Fonction publique permettant d'obtenir la valeur de la
-    *                      donnee coord d'un Robot
-    * Remarques          : Utilise pour l'operateur de flux de Plateau
-    * @param coord       : Coordonnee que l'on attribue au robot courant
+    *                      donnée coord d'un Robot
+    * Remarques          :
     */
    Coord get_coord() const;
 private:
-   // Numero unique de l'objet Robot
+   // Numéro unique de l'objet Robot
    const  Data NO;
-   // Nombre total de robot existant, numero de serie du robot suivant
+   // Nombre total de robot existant, numero de série du robot suivant
    static Data suivant;
-   // Coordonnees du Robot
+   // Coordonnées du Robot
    Coord coord;
 };
 

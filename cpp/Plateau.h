@@ -3,7 +3,7 @@
 Nom du fichier      : Plateau.h
 Auteur(s)           : Baume Oscar & Centeno Cédric
 Date creation       : 14.01.2022
-Description         : Header de la class Plateau.
+Description         : En-tête de la class Plateau.
                       Définition de la class et de ces composants.
 Remarque(s)         : On défini la class Robot vide car on en a besoin dans la class
                       pour pouvoir définir un std::vector<Robot>.
@@ -82,7 +82,7 @@ public:
 private:
    // Vecteur des robots du plateau
    std::vector<Robot> robots;
-   // status du plateau
+   // Status du plateau
    Status status;
    // Dimension du plateau
    const Data  max_hauteur,

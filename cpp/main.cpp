@@ -35,18 +35,19 @@ int main() {
              MIN_ROBOT = 1,      MAX_ROBOT = 10;
 
    cout << MSG_BIENVENUE << endl << endl;
-
+   // création du tableau comprenant la saisie contrôlée des valeurs
    Plateau plateau(saisie_entre(MIN_DIMENSION, MAX_DIMENSION,
                                 "Largeur",
                                 MSG_ERREUR),
                    saisie_entre(MIN_DIMENSION,MAX_DIMENSION,
-                        "Hauteur",
+                                "Hauteur",
                                 MSG_ERREUR),
                    saisie_entre(MIN_ROBOT,MAX_ROBOT,
-                        "Nombre objet",
+                                "Nombre objet",
                                 MSG_ERREUR));
-
+   // affichage du plateau avant que le jeu commence
    cout << plateau;
+   // délai avant prochaine instruction pour pouvoir observer le tableau de départ
    this_thread::sleep_for(300ms);
 
    do{

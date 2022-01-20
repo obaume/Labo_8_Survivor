@@ -1,6 +1,14 @@
-//
-// Created by oscar on 14.01.2022.
-//
+/*
+-----------------------------------------------------------------------------------
+Nom du fichier : aleatoire.cpp
+Auteur(s)      : Dorian Gillioz
+Date creation  : 10.11.2021
+Description    : Déclaration de la fonction de la librairie aleatoire
+Remarque(s)    : ---
+Modification   : ---
+Compilateur    : Mingw-w64 g++ 11.2.0
+-----------------------------------------------------------------------------------
+*/
 
 #ifndef CPP_ALEATOIRE_H
 #define CPP_ALEATOIRE_H
