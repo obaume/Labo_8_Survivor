@@ -18,7 +18,7 @@ Compilateur         : Mingw-w64 g++ 11.2.0
 #include "Robot.h"
 #include "Aleatoire.h"
 
-Data Robot::suivant  = 1;
+Data Robot::suivant  = 0;
 Data Robot::total    = 0;
 
 Robot::Robot(): NO(suivant) {
