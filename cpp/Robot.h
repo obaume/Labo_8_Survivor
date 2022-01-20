@@ -17,6 +17,7 @@ Compilateur         : Mingw-w64 g++ 11.2.0
 
 #ifndef CPP_ROBOT_H
 #define CPP_ROBOT_H
+
 #include <utility>
 #include "Plateau.h"
 #include "preferences.h"
