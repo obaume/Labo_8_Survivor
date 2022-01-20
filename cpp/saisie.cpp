@@ -46,8 +46,9 @@ bool recommencer(const string& message, const char& option_vrai, const char& opt
    do {
       cout << message << "[" << option_vrai << "-" << option_faux << "]";
       cin >> choix;
-   } while (choix != option_vrai && choix != option_faux);
+   } while (   tolower(choix) != tolower(option_vrai)
+            && tolower(choix) != tolower(option_faux));
 
-   return choix == option_vrai;
+   return tolower(choix) == tolower(option_vrai);
 }
 

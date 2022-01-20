@@ -47,12 +47,14 @@ public:
     * @param nombre_robot : Nombre de robot qui seront sur le plateau
     */
    Plateau(Data largeur, Data hauteur, Data nombre_robot);
+
    /**
     * Nom        : ~Plateau
     * Définition : Destructeur d'objet de la class Plateau
     * Remarques  :
     */
    ~Plateau();
+
    /**
     * Nom        : effectuer_tour
     * Définition : Fonction qui effectue un "tour" de jeu.
@@ -62,6 +64,7 @@ public:
     * Remarques  : Fonction non const car on modifie le vecteur robots
     */
    void effectuer_tour();
+
    /**
     * Nom        : est_fini
     * Définition : Fonction qui retourne si la "partie" est fini
@@ -69,6 +72,7 @@ public:
     * @return    : Si le status du plateau est Status::FINI
     */
    bool est_fini() const;
+
    /**
     * Nom          : trouver_robot
     * Définition   : Fonction qui retourne les robots se trouvant sur une ligne du

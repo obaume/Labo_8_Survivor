@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/oscar/CLionProjects/Labo_8_Survivor/cpp/preferences.h
+utility
+-
+
+C:/Users/oscar/CLionProjects/Labo_8_Survivor/cpp/saisie.cpp
+iostream
+-
+string
+-
+limits
+-
+saisie.h
+C:/Users/oscar/CLionProjects/Labo_8_Survivor/cpp/saisie.h
+
+C:/Users/oscar/CLionProjects/Labo_8_Survivor/cpp/saisie.h
+cstdlib
+-
+string
+-
+preferences.h
+C:/Users/oscar/CLionProjects/Labo_8_Survivor/cpp/preferences.h
+

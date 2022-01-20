@@ -1,0 +1,4 @@
+C:\Users\oscar\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\212.5284.51\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wconversion -Wsign-conversion -pedantic)" -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - MinGW Makefiles" C:\Users\oscar\CLionProjects\Labo_8_Survivor\cpp
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/Users/oscar/CLionProjects/Labo_8_Survivor/cpp/cmake-build-debug
