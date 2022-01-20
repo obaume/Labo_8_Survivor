@@ -33,6 +33,8 @@ Robot::Robot(): NO(suivant) {
 }
 
 Robot::Robot(const Robot& robot): NO(robot.NO) {
+   // suivant n'est pas incremente car ce constructeur est utilise pour deplacer
+   // des robots dans un vecteur
    coord = robot.coord;
 }
 
