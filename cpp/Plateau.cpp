@@ -1,7 +1,6 @@
 /*
 -----------------------------------------------------------------------------------
 Nom du fichier      : Plateau.cpp
-Nom du laboratoire  :
 Auteur(s)           : Baume Oscar & Centeno Cédric
 Date creation       : 14.01.2022
 Description         :
@@ -70,7 +69,10 @@ void Plateau::effectuer_tour() {
       // pour chaque robots du plateau
       for (auto y = robots.begin(); y < robots.end(); ++y){
          // on le délpace
-         y->deplacer(max_hauteur, max_largeur, min_hauteur, min_largeur);
+         Direction direction = Direction(aleatoire((int)Direction::HAUT,
+                                                   (int)Direction::DROITE));
+         if(peut_se_deplacer(y->get_coord(), direction))
+            y->deplacer(direction);
          for(auto i = robots.begin(); i < robots.end(); ++i) {
             // si ce sont 2 robots différent et qu'ils ont les mêmes coord
             if (y->get_num() != i->get_num()
@@ -138,4 +140,13 @@ ostream& operator <<(ostream &os, const Plateau& plateau) {
    }
 
    return os;
+}
+
+bool Plateau::peut_se_deplacer(const Coord& coord, Direction direction) const{
+   return
+   (direction == Direction::HAUT    and coord.first != min_hauteur)    or
+   (direction == Direction::BAS     and coord.first != max_hauteur -1) or
+   (direction == Direction::GAUCHE  and coord.second  != min_largeur)    or
+   (direction == Direction::DROITE  and coord.second  != max_largeur -1);
+
 }

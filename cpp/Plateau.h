@@ -23,9 +23,10 @@ Compilateur         : Mingw-w64 g++ 11.2.0
 #include "preferences.h"
 
 class Robot;
+enum class Direction;
+
 // Status que peut avoir un plateau
 enum class Status{EN_COURS, FINI};
-
 
 class Plateau {
    /**
@@ -84,6 +85,7 @@ public:
    std::vector<Robot> trouver_robot(Data ligne) const;
 
 private:
+   bool peut_se_deplacer(const Coord& c, Direction direction) const;
    // Vecteur des robots du plateau
    std::vector<Robot> robots;
    // Status du plateau

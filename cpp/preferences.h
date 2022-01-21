@@ -1,7 +1,6 @@
 /*
 -----------------------------------------------------------------------------------
 Nom du fichier      : preferences.h
-Nom du laboratoire  :
 Auteur(s)           : Baume Oscar & Centeno Cédric
 Date creation       : 14.01.2022
 Description         : En-tête mettant à disposition des allias permettant de

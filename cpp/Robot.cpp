@@ -1,7 +1,6 @@
 /*
 -----------------------------------------------------------------------------------
 Nom du fichier      : Robot.cpp
-Nom du laboratoire  :
 Auteur(s)           : Baume Oscar & Centeno Cédric
 Date creation       : 14.01.2022
 Description         : Définition des fonction de la classe Robot
@@ -79,30 +78,19 @@ Robot &Robot::operator=(const Robot& robot) {
    return *this;
 }
 
-void Robot::deplacer(Data max_hauteur, Data max_largeur, Data min_hauteur,
-                     Data min_largeur) {
-   // generation aleatoire d'une direction dans l'interval [HAUT - DROITE] de la
-   // class Direction
-   Direction direction = Direction(aleatoire((int)Direction::HAUT,
-                                             (int)Direction::DROITE));
-   // pour chaque case, vérifier si le robot ne sors pas du plateau, si c'est
-   // le cas, le robot ne bouge pas
+void Robot::deplacer(Direction direction) {
    switch (direction) {
       case Direction::HAUT   :
-         if (coord.first != max_hauteur-1)
-            coord.first += 1;
+         coord.first -= 1;
          break;
       case Direction::BAS    :
-         if (coord.first != min_hauteur)
-            coord.first -= 1;
+         coord.first += 1;
          break;
       case Direction::GAUCHE :
-         if (coord.second != min_largeur)
-            coord.second  -= 1;
+         coord.second  -= 1;
          break;
       case Direction::DROITE :
-         if (coord.second != max_largeur-1)
-            coord.second  += 1;
+         coord.second  += 1;
          break;
    }
 }
