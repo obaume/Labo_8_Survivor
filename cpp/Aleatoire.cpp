@@ -12,7 +12,6 @@ Compilateur    : Mingw-w64 g++ 11.2.0
 
 #include <cstdlib>
 #include <time.h>
-#include "preferences.h"
 #include "Aleatoire.h"
 
 using namespace std;

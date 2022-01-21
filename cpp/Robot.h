@@ -128,10 +128,9 @@ public:
     */
    void deplacer(Coord coord);
 private:
-
    // Numéro unique de l'objet Robot
    const  Data NO;
-   // Nombre total de robot existant, numero de série du robot suivant
+   // Numéro de série du robot suivant
    static Data suivant;
    // Coordonnées du Robot
    Coord coord;

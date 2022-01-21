@@ -1,10 +1,10 @@
 /*
 -----------------------------------------------------------------------------------
 Nom du fichier : aleatoire.cpp
-Auteur(s)      : Dorian Gillioz
+Auteur(s)      : Oscar Baume & Dorian Gillioz
 Date creation  : 10.11.2021
 Description    : Déclaration de la fonction de la librairie aleatoire
-Remarque(s)    : ---
+Remarque(s)    : Bibliothèque réutilisé du labo 05 Reflex
 Modification   : ---
 Compilateur    : Mingw-w64 g++ 11.2.0
 -----------------------------------------------------------------------------------

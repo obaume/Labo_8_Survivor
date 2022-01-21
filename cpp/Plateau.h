@@ -5,8 +5,9 @@ Auteur(s)           : Baume Oscar & Centeno Cédric
 Date creation       : 14.01.2022
 Description         : En-tête de la class Plateau.
                       Définition de la class et de ces composants.
-Remarque(s)         : On défini la class Robot vide car on en a besoin dans la class
-                      pour pouvoir définir un std::vector<Robot>.
+Remarque(s)         : On défini les class Robot et Direction vide car on en a besoin
+                      dans la class pour pouvoir définir un std::vector<Robot> et
+                      la fonction peut_se_deplacer().
 Modification:       ---
                     Date   :
                     Auteur :
@@ -15,13 +16,15 @@ Compilateur         : Mingw-w64 g++ 11.2.0
 -----------------------------------------------------------------------------------
 */
 
-#ifndef CPP_BOARD_H
-#define CPP_BOARD_H
-#include "Robot.h"
+#ifndef CPP_PLATEAU_H
+#define CPP_PLATEAU_H
+
 #include <vector>
 #include <ostream>
+#include "Robot.h"
 #include "preferences.h"
 
+// pré instanciation des classes de Robot.h
 class Robot;
 enum class Direction;
 
@@ -57,6 +60,13 @@ public:
    ~Plateau();
 
    /**
+    * Nom        : jouer
+    * Définition : fonction qui gère la partie
+    * Remarques  :
+    */
+   void jouer();
+private:
+   /**
     * Nom        : effectuer_tour
     * Définition : Fonction qui effectue un "tour" de jeu.
     *              On y déplace les robots, vérifie si il y a 2 robots à la même
@@ -84,8 +94,18 @@ public:
     */
    std::vector<Robot> trouver_robot(Data ligne) const;
 
-private:
+   /**
+    * Nom               : peut_se_deplacer
+    * Définition        : fonction qui retourne si il est possible de se déplacer depuis
+    *                     une coordonées dans une direction
+    * Remarques         :
+    * @param c          : la coordonnée qui est testée
+    * @param direction  : direction dans laquel on veut savoir si il est possible
+    *                     de se déplacer.
+    * @return           : si le déplacement est possible
+    */
    bool peut_se_deplacer(const Coord& c, Direction direction) const;
+
    // Vecteur des robots du plateau
    std::vector<Robot> robots;
    // Status du plateau
@@ -97,5 +117,4 @@ private:
                min_largeur;
 };
 
-
-#endif //CPP_BOARD_H
+#endif //CPP_PLATEAU_H

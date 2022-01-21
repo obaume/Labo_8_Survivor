@@ -1,9 +1,10 @@
+
 /*
 -----------------------------------------------------------------------------------
 Nom du fichier      : Plateau.cpp
 Auteur(s)           : Baume Oscar & Centeno Cédric
 Date creation       : 14.01.2022
-Description         :
+Description         : Définition des fonction de la classe Plateau
 Remarque(s)         :
 Modification:       ---
                     Date   :
@@ -15,16 +16,19 @@ Compilateur         : Mingw-w64 g++ 11.2.0
 #include <ostream>
 #include <algorithm>
 #include <iostream>
-#include <iomanip>
 #include <string>
+#include <chrono>
+#include <thread>
 #include "Plateau.h"
 #include "Aleatoire.h"
 
 using namespace std;
 
+const chrono::duration SLEEPING_TIME = 200ms;
+
 Plateau::Plateau(Data largeur, Data hauteur, Data nombre_robot)
-      : max_hauteur(hauteur), max_largeur(largeur),
-        min_hauteur(0), min_largeur(0){
+   : max_hauteur(hauteur), max_largeur(largeur),
+     min_hauteur(0), min_largeur(0){
    status = Status::EN_COURS;
    robots.resize(nombre_robot);
    vector<Coord> temp;
@@ -39,7 +43,7 @@ Plateau::Plateau(Data largeur, Data hauteur, Data nombre_robot)
             aleatoire((int)min_largeur,(int)max_largeur-1)
          };
       }
-      // tant que la coordonnée c se trouve déjà dans le vecteur temp
+         // tant que la coordonnée c se trouve déjà dans le vecteur temp
       while(find(temp.begin(),temp.end(),c) != temp.end());
       // ajouter la coordonnée c dans le vecteur temp
       temp.push_back(c);
@@ -59,9 +63,23 @@ Plateau::~Plateau() {
    robots.clear();
 }
 
+void Plateau::jouer() {
+   // fait
+   do{
+      this_thread::sleep_for(SLEEPING_TIME);
+      // raffraichi le terminale de la console
+      system("cls");
+      this->effectuer_tour();
+      cout << *this;
+   }
+   // tant que la partie est en cours
+   while(!this->est_fini());
+}
+
 bool Plateau::est_fini() const {
    return status == Status::FINI;
 }
+
 
 void Plateau::effectuer_tour() {
    // si le status est en cours et qu'il reste + 1 robot sur le plateau
@@ -89,7 +107,6 @@ void Plateau::effectuer_tour() {
       status = Status::FINI;
 }
 
-
 vector<Robot> Plateau::trouver_robot(Data ligne) const {
    vector<Robot> output;
    // pour tour les robots du plateau
@@ -106,7 +123,7 @@ vector<Robot> Plateau::trouver_robot(Data ligne) const {
 ostream& operator <<(ostream &os, const Plateau& plateau) {
    // string remplis d'espace pour la largeur du plateau
    const string   ESPACE          = string(plateau.max_largeur, ' '),
-                  BORDURE_PLATEAU = string(plateau.max_largeur + 2, '-');
+      BORDURE_PLATEAU = string(plateau.max_largeur + 2, '-');
    const unsigned ZERO_ASCII      = 48;
 
    os << BORDURE_PLATEAU << endl;
@@ -114,13 +131,14 @@ ostream& operator <<(ostream &os, const Plateau& plateau) {
    for (Data i = 0; i < plateau.max_hauteur; ++i) {
       // on cherche les robots de la ligne i
       ligne = plateau.trouver_robot(i);
+      // affiche la borne de gauche
       os << '|';
       // si la ligne est vide
       if (ligne.empty()) {
          // on affiche une ligne vide
          os << ESPACE;
       }
-      // sinon
+         // sinon
       else {
          // on copie une ligne vide
          string output = ESPACE;
@@ -131,6 +149,7 @@ ostream& operator <<(ostream &os, const Plateau& plateau) {
          }
          os << output ;
       }
+      // affiche la borne de droite
       os << '|' << endl;
    }
    os << BORDURE_PLATEAU << endl << endl;
@@ -144,9 +163,9 @@ ostream& operator <<(ostream &os, const Plateau& plateau) {
 
 bool Plateau::peut_se_deplacer(const Coord& coord, Direction direction) const{
    return
-   (direction == Direction::HAUT    and coord.first != min_hauteur)    or
-   (direction == Direction::BAS     and coord.first != max_hauteur -1) or
-   (direction == Direction::GAUCHE  and coord.second  != min_largeur)    or
-   (direction == Direction::DROITE  and coord.second  != max_largeur -1);
+      (direction == Direction::HAUT    and coord.first   != min_hauteur)    or
+      (direction == Direction::BAS     and coord.first   != max_hauteur -1) or
+      (direction == Direction::GAUCHE  and coord.second  != min_largeur)    or
+      (direction == Direction::DROITE  and coord.second  != max_largeur -1);
 
 }

@@ -21,5 +21,4 @@ Compilateur         : Mingw-w64 g++ 11.2.0
 
 using Data = unsigned;
 using Coord = std::pair<Data,Data>;
-
 #endif //CPP_PREFERENCES_H

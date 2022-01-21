@@ -5,7 +5,11 @@ Auteur(s)      : Baume Oscar & Dorian Gillioz
 Date creation  : 10.11.2021
 Description    : En-tête de la librairie pour les saisies utilisateurs du programme
 Remarque(s)    : ---
-Modification   : ---
+Modification   :
+                 Date        : 15.01.2022
+                 Auteur      : Oscar Baume
+                 Description : Utilisation de preferences.h pour Data à la place
+                               de int.
 Compilateur    : Mingw-w64 g++ 11.2.0
 -----------------------------------------------------------------------------------
 */
